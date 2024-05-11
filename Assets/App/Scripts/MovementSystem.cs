@@ -19,8 +19,8 @@ public class MovementSystem : ISystem
             ref var velocity = ref entity.GetComponent<VelocityComponent>();
             ref var gameObjectComponent = ref entity.GetComponent<GameObjectComponent>();
 
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float verticalInput = Input.GetAxisRaw("Vertical");
 
             velocity.VelocityValue = new Vector2(horizontalInput, verticalInput).normalized;
 
@@ -28,6 +28,7 @@ public class MovementSystem : ISystem
             gameObjectComponent.GameObject.transform.position = position.PositionValue;
         }
     }
+
 
     public void Dispose() {
     }
