@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using Scellecs.Morpeh;
 using UnityEngine;
 
-public struct GameObjectComponent : IComponent {
-    public GameObject GameObject;
+namespace App.Scripts.Components
+{
+    [Serializable]
+    public struct GameObjectComponent : IComponent {
+        public GameObject GameObject;
+    }
 }

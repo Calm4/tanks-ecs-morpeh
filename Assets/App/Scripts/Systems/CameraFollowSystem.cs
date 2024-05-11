@@ -1,22 +1,21 @@
 ﻿using App.Scripts.Components;
-using UnityEngine;
 using Scellecs.Morpeh;
+using UnityEngine;
 
-namespace App.Scripts
+namespace App.Scripts.Systems
 {
-    public class CameraFollowSystem : ISystem
-    {
+    public class CameraFollowSystem : ISystem {
         public World World { get; set; }
-        private Filter filter;
+        private Filter _filter;
 
         public void OnAwake()
         {
-            this.filter = this.World.Filter.With<FollowTargetComponent>().Build();
+            _filter = World.Filter.With<FollowTargetComponent>().Build();
         }
 
         public void OnUpdate(float deltaTime)
         {
-            foreach (var entity in this.filter)
+            foreach (var entity in _filter)
             {
                 ref var followTarget = ref entity.GetComponent<FollowTargetComponent>();
                 ref var gameObject = ref followTarget.TargetEntity.GetComponent<GameObjectComponent>();

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using App.Scripts;
 using App.Scripts.Components;
+using App.Scripts.Systems;
 using Scellecs.Morpeh;
+using Scellecs.Morpeh.Providers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,20 +16,23 @@ public class Game : MonoBehaviour
     private World _world;
     private MovementSystem _movementSystem;
     private CameraFollowSystem _cameraFollowSystem;
-    private Entity playerEntity;
+    private HealthSystem _healthSystem;
+    private Entity _playerEntity;
     void Start()
     {
         _world = World.Default;
         
         _movementSystem = new MovementSystem { World = _world };
         _cameraFollowSystem = new CameraFollowSystem { World = _world };
+        _healthSystem = new HealthSystem() { World = _world };
         
         var systemsGroup = _world.CreateSystemsGroup();
         systemsGroup.AddSystem(_movementSystem);
         systemsGroup.AddSystem(_cameraFollowSystem);
+        systemsGroup.AddSystem(_healthSystem);
         
         _world.AddPluginSystemsGroup(systemsGroup);
-        playerEntity = CreateEntityWithComponents();
+        _playerEntity = CreateEntityWithComponents();
         CreateCameraEntity();
     }
 
@@ -54,6 +59,14 @@ public class Game : MonoBehaviour
         rigidbody2d.gravityScale = 0f;
         rigidbody2d.interpolation = RigidbodyInterpolation2D.Interpolate;
         
+        ref var health = ref entity.AddComponent<HealthComponent>();
+        health.currentHealth = 80;
+        health.maxHealth = 100;
+
+        ref var damage = ref entity.AddComponent<DamageComponent>();
+        damage.Damage = 5;
+        damage.CritDamage = 10;
+        
         playerGameObject.GameObject.AddComponent<BoxCollider2D>();
         
         return entity;
@@ -63,7 +76,7 @@ public class Game : MonoBehaviour
     {
         var cameraEntity = _world.CreateEntity();
         ref var followTarget = ref cameraEntity.AddComponent<FollowTargetComponent>(out _);
-        followTarget.TargetEntity = playerEntity;
+        followTarget.TargetEntity = _playerEntity;
     }
 
 

@@ -1,8 +1,10 @@
+using System;
 using Scellecs.Morpeh;
 using UnityEngine;
 
 namespace App.Scripts.Components
 {
+    [Serializable]
     public struct PositionComponent : IComponent {
         public Vector2 PositionValue;
     }
