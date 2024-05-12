@@ -74,7 +74,7 @@ namespace App.Scripts
 
             playerGameObject.GameObject.AddComponent<BoxCollider2D>();
             
-            playerGameObject.GameObject.AddComponent<PlayerCollision>();
+            
         
             return entity;
         }
@@ -104,8 +104,14 @@ namespace App.Scripts
             health.currentHealth = 100;
             health.maxHealth = 100;
 
+            ref var damage = ref entity.AddComponent<DamageComponent>();
+            damage.Damage = 5;
+            damage.CritDamage = 10;
+            
             enemyGameObject.GameObject.AddComponent<BoxCollider2D>();
 
+            enemyGameObject.GameObject.AddComponent<PlayerCollision>();
+            
             enemyGameObject.GameObject.AddComponent<EntityProvider>();
             
             return entity;
