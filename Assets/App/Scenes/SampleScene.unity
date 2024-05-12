@@ -1134,7 +1134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
-  speed: 25
+  speed: 4
+  movementNormalization: 0.05
 --- !u!4 &848762299
 Transform:
   m_ObjectHideFlags: 0

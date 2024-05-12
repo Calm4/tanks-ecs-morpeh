@@ -23,8 +23,8 @@ namespace App.Scripts.Systems
             
                 Vector2 input = new Vector2(horizontalInput, verticalInput);
             
-                velocity.VelocityValue = input.normalized * velocity.Speed;
-                Vector2 newPosition = position.PositionValue + velocity.VelocityValue * deltaTime;
+                velocity.velocityValue = input.normalized * velocity.speed * velocity.movementNormalization;
+                Vector2 newPosition = position.PositionValue + velocity.velocityValue;
             
                 var rigidbody2D = gameObject.GameObject.GetComponent<Rigidbody2D>();
                 rigidbody2D.MovePosition(newPosition);
