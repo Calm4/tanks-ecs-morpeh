@@ -14,16 +14,6 @@ public class PlayerCollision : MonoBehaviour
     void Start()
     {
         _world = World.Default;
-        //_entity = GetComponent<EntityProvider>().Entity;
-        //_damageComponent = _entity.GetComponent<DamageComponent>();
-    }
-    void Update()
-    {
-        if (_entity == null)
-        {
-            _entity = GetComponent<EntityProvider>().Entity;
-            _damageComponent = _entity.GetComponent<DamageComponent>();
-        }
     }
 
 

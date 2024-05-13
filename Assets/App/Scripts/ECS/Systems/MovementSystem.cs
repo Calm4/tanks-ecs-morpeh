@@ -1,18 +1,19 @@
 using App.Scripts.Components;
 using Scellecs.Morpeh;
+using Scellecs.Morpeh.Systems;
 using UnityEngine;
 
 namespace App.Scripts.Systems
 {
-    public class MovementSystem : ISystem {
-        public World World { get; set; }
+    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(MovementSystem), fileName = "Movement System")]
+    public class MovementSystem : UpdateSystem {
         private Filter _filter;
-
-        public void OnAwake() {
+        public override void OnAwake()
+        {
             _filter = World.Filter.With<PositionComponent>().With<VelocityComponent>().With<GameObjectComponent>().With<SpriteRendererComponent>().Build();
         }
 
-        public void OnUpdate(float deltaTime) {
+        public override void OnUpdate(float deltaTime) {
             foreach (var entity in _filter) {
                 ref var position = ref entity.GetComponent<PositionComponent>();
                 ref var velocity = ref entity.GetComponent<VelocityComponent>();
@@ -34,7 +35,7 @@ namespace App.Scripts.Systems
         }
 
 
-        public void Dispose() {
+        public override void Dispose() {
         }
     }
 }

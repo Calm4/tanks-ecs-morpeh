@@ -155,8 +155,10 @@ MonoBehaviour:
   order: 0
   initializers: []
   updateSystems:
-  - enabled: 0
-    system: {fileID: 0}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 881216782f8b59c498daafbb624af358, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: d527d75da6514b348a2218d1e635e9ff, type: 2}
   fixedUpdateSystems: []
   lateUpdateSystems: []
   cleanupSystems: []

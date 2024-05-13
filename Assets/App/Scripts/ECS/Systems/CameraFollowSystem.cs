@@ -1,19 +1,20 @@
 ﻿using App.Scripts.Components;
 using Scellecs.Morpeh;
+using Scellecs.Morpeh.Systems;
 using UnityEngine;
 
 namespace App.Scripts.Systems
 {
-    public class CameraFollowSystem : ISystem {
-        public World World { get; set; }
+    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CameraFollowSystem), fileName = "Camera Follow System")]
+    public class CameraFollowSystem : UpdateSystem {
         private Filter _filter;
 
-        public void OnAwake()
+        public override void OnAwake()
         {
             _filter = World.Filter.With<FollowTargetComponent>().Build();
         }
 
-        public void OnUpdate(float deltaTime)
+        public override void OnUpdate(float deltaTime)
         {
             foreach (var entity in _filter)
             {
@@ -24,7 +25,7 @@ namespace App.Scripts.Systems
         }
 
 
-        public void Dispose()
+        public override void Dispose()
         {
         }
     }
