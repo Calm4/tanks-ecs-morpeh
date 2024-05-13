@@ -6,7 +6,7 @@ using UnityEngine;
 namespace App.Scripts.Systems
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CameraFollowSystem), fileName = "Camera Follow System")]
-    public class CameraFollowSystem : UpdateSystem {
+    public sealed class CameraFollowSystem : UpdateSystem {
         private Filter _filter;
 
         public override void OnAwake()

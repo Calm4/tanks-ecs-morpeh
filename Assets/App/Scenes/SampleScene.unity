@@ -159,6 +159,8 @@ MonoBehaviour:
     system: {fileID: 11400000, guid: 881216782f8b59c498daafbb624af358, type: 2}
   - enabled: 1
     system: {fileID: 11400000, guid: d527d75da6514b348a2218d1e635e9ff, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: f86c6f6b15fa11a4bb38cadc84f0da48, type: 2}
   fixedUpdateSystems: []
   lateUpdateSystems: []
   cleanupSystems: []

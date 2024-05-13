@@ -3,10 +3,10 @@ using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
 
-namespace App.Scripts.Systems
+namespace App.Scripts.ECS.Systems
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(MovementSystem), fileName = "Movement System")]
-    public class MovementSystem : UpdateSystem {
+    public sealed class MovementSystem : UpdateSystem {
         private Filter _filter;
         public override void OnAwake()
         {

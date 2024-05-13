@@ -1,27 +1,28 @@
 ﻿using App.Scripts.Components;
-using UnityEngine;
-using UnityEngine.UIElements;
+using App.Scripts.ECS.Components;
 using Scellecs.Morpeh;
+using UnityEngine;
 
-namespace App.Scripts.Systems
+namespace App.Scripts.ECS.Systems
 {
+    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(EnemyHealthSystem), fileName = "Enemy Health System")]
     public sealed class EnemyHealthSystem : ISystem
     {
         public World World { get; set; }
         private Filter _filter;
-        private Filter _playerfilter;
+        private Filter _playerFilter;
 
         public void OnAwake()
         {
             _filter = World.Filter.With<EnemyComponent>().With<HealthComponent>().Build();
-            _playerfilter = World.Filter.With<PlayerComponent>().Build();
+            _playerFilter = World.Filter.With<PlayerComponent>().Build();
         }
 
         int playerDamage = 0;
 
         public void OnUpdate(float deltaTime)
         {
-            foreach (var playerEntity in _playerfilter)
+            foreach (var playerEntity in _playerFilter)
             {
                 ref var playerDamageComponent = ref playerEntity.GetComponent<DamageComponent>();
                 playerDamage = playerDamageComponent.Damage;

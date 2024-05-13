@@ -1,22 +1,22 @@
 ﻿using App.Scripts.Components;
+using Scellecs.Morpeh;
+using Scellecs.Morpeh.Systems;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-namespace App.Scripts.Systems
+namespace App.Scripts.ECS.Systems
 {
-    using Scellecs.Morpeh;
-
-    public sealed class HealthSystem : ISystem
+    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(HealthSystem), fileName = "Health System")]
+    public sealed class HealthSystem : UpdateSystem
     {
-        public World World { get; set; }
         private Filter _filter;
 
-        public void OnAwake()
+        public override void OnAwake()
         {
             _filter = World.Filter.With<HealthComponent>().With<DamageComponent>().Build();
-
         }
 
-        public void OnUpdate(float deltaTime)
+        public override void OnUpdate(float deltaTime)
         {
             foreach (var entity in _filter)
             {
@@ -39,7 +39,7 @@ namespace App.Scripts.Systems
             }
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
         }
     }

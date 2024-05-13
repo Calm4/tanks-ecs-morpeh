@@ -1,34 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using App.Scripts.Components;
+using App.Scripts.ECS.Components;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
 
-public class PlayerCollision : MonoBehaviour
+namespace App.Scripts
 {
-    private Entity _entity;
-    private World _world;
-    private DamageComponent _damageComponent;
+    public class PlayerCollision : MonoBehaviour
+    {
+        private Entity _entity;
+        private World _world;
+        private DamageComponent _damageComponent;
     
-    void Start()
-    {
-        _world = World.Default;
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("12312321321312312");
-        var enemyEntityProvider = collision.GetComponent<EntityProvider>();
-        if (enemyEntityProvider != null)
+        void Start()
         {
-            var enemyEntity = enemyEntityProvider.Entity;
-            if (enemyEntity.Has<EnemyComponent>() && enemyEntity.Has<HealthComponent>())
+            _world = World.Default;
+        }
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            Debug.Log("12312321321312312");
+            var enemyEntityProvider = collision.GetComponent<EntityProvider>();
+            if (enemyEntityProvider != null)
             {
-                ref var enemyHealth = ref enemyEntity.GetComponent<HealthComponent>();
-                enemyHealth.currentHealth -= _damageComponent.Damage;
-                Debug.Log(enemyHealth.currentHealth + "/" + enemyHealth.maxHealth);
+                var enemyEntity = enemyEntityProvider.Entity;
+                if (enemyEntity.Has<EnemyComponent>() && enemyEntity.Has<HealthComponent>())
+                {
+                    ref var enemyHealth = ref enemyEntity.GetComponent<HealthComponent>();
+                    enemyHealth.currentHealth -= _damageComponent.Damage;
+                    Debug.Log(enemyHealth.currentHealth + "/" + enemyHealth.maxHealth);
+                }
             }
         }
     }
