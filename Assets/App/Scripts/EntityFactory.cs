@@ -1,6 +1,7 @@
 using App.Scripts;
 using App.Scripts.Components;
 using App.Scripts.ECS.Components;
+using App.Scripts.Weapons;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
@@ -15,10 +16,9 @@ public class EntityFactory
         _world = world;
     }
 
-    public Entity CreateEntityWithComponents(Sprite sprite, float speed, float movementNormalization)
+    public Entity CreateEntityWithComponents(Sprite sprite, float speed, float movementNormalization, BulletWeaponConfig bulletWeaponConfig)
     {
         var entity = _world.CreateEntity();
-        entity.AddComponent<PlayerComponent>();
 
         ref var position = ref entity.AddComponent<PositionComponent>();
         position.PositionValue = Vector2.zero;
@@ -27,9 +27,11 @@ public class EntityFactory
         velocity.velocityValue = Vector2.zero;
         velocity.speed = speed;
         velocity.movementNormalization = movementNormalization;
-
+        
+        
         ref var playerGameObject = ref entity.AddComponent<GameObjectComponent>();
         playerGameObject.GameObject = new GameObject("Player");
+        
 
         ref var spriteRenderer = ref entity.AddComponent<SpriteRendererComponent>();
         spriteRenderer.SpriteRenderer = playerGameObject.GameObject.AddComponent<SpriteRenderer>();
@@ -44,6 +46,10 @@ public class EntityFactory
         health.currentHealth = 80;
         health.maxHealth = 100;
 
+        ref var playerComponent = ref entity.AddComponent<PlayerComponent>();
+        playerGameObject.GameObject.AddComponent<PlayerProvider>();
+        playerComponent.config = velocity;
+        playerComponent.body = rigidbody2d;
       
 
         playerGameObject.GameObject.AddComponent<BoxCollider2D>();
@@ -53,6 +59,8 @@ public class EntityFactory
         canCollideComponent.detector.Init(_world);
         canCollideComponent.detector.listener = entity;
         
+        ref var bulletWeaponComponent = ref entity.AddComponent<BulletWeaponComponent>();
+        bulletWeaponComponent.config = bulletWeaponConfig;
         return entity;
     }
 

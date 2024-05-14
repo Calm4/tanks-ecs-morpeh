@@ -1,3 +1,4 @@
+using App.Scripts.Weapons;
 using Scellecs.Morpeh;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace App.Scripts
         [SerializeField] private Sprite sprite;
         [SerializeField] private float speed;
         [SerializeField] private float movementNormalization;
+        [SerializeField] private BulletWeaponConfig bulletWeaponConfig;
         private World _world;
         private EntityFactory _entityFactory;
         private void Start()
@@ -15,7 +17,7 @@ namespace App.Scripts
             _world = World.Default;
             _entityFactory = new EntityFactory(_world);
 
-            var playerEntity = _entityFactory.CreateEntityWithComponents(sprite,speed, movementNormalization);
+            var playerEntity = _entityFactory.CreateEntityWithComponents(sprite,speed, movementNormalization,bulletWeaponConfig);
             _entityFactory.CreateCameraEntity(playerEntity);
         }
 
