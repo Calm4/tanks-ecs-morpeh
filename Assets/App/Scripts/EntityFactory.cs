@@ -4,6 +4,7 @@ using App.Scripts.ECS.Components;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
+using HealthComponent = App.Scripts.HealthComponent;
 
 public class EntityFactory
 {

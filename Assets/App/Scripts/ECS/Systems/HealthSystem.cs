@@ -11,12 +11,12 @@ namespace App.Scripts.ECS.Systems
     public sealed class HealthSystem : UpdateSystem
     {
         private Filter _playerFilter;
-        private Filter _enemiesFilter;
+        private Filter _wallsFilter;
 
         public override void OnAwake()
         {
             _playerFilter = World.Filter.With<PlayerComponent>().With<DamageComponent>().With<HealthComponent>().Build();
-            _playerFilter = World.Filter.With<EnemyComponent>().With<DamageComponent>().With<HealthComponent>().Build();
+            _wallsFilter = World.Filter.With<WallComponent>().Build();
             
         }
 
@@ -41,12 +41,9 @@ namespace App.Scripts.ECS.Systems
                     entity.Dispose();
                 }
             }
-
-            foreach (var entity in _enemiesFilter)
+            foreach (var entity in _wallsFilter)
             {
                 ref var healthComponent = ref entity.GetComponent<HealthComponent>();
-                ref var damageComponent = ref entity.GetComponent<DamageComponent>();
-                ref var gameObjectComponent = ref entity.GetComponent<GameObjectComponent>();
             }
         }
 
