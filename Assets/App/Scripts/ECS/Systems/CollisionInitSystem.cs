@@ -8,10 +8,10 @@ namespace App.Scripts.ECS.Systems
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CollisionInitSystem))]
     public sealed class CollisionInitSystem : FixedUpdateSystem
     {
-        private Filter wallsFilter;
+        private Filter _wallsFilter;
         public override void OnAwake()
         {
-            wallsFilter = World.Filter.With<WallComponent>().Without<CanCollideComponent>().Build();
+            _wallsFilter = World.Filter.With<WallComponent>().Without<CanCollideComponent>().Build();
         }
 
         public override void OnUpdate(float deltaTime)
@@ -21,7 +21,7 @@ namespace App.Scripts.ECS.Systems
 
         private void ProcessWalls()
         {
-            foreach (var entity in wallsFilter)
+            foreach (var entity in _wallsFilter)
             {
                 ref WallComponent wall = ref entity.GetComponent<WallComponent>();
                 MakeCanCollide(entity, wall.transform.gameObject);

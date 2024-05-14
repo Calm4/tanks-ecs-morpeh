@@ -31,12 +31,14 @@ namespace App.Scripts
             }
             
             Entity eventEntity = world.CreateEntity();
-            ref CollisionEventComponent evt = ref eventEntity.AddComponent<CollisionEventComponent>();
-            evt.collision = other;
-            evt.first = listener;
-
+            ref CollisionEventComponent collisionEvent = ref eventEntity.AddComponent<CollisionEventComponent>();
+            collisionEvent.collision = other;
+            collisionEvent.first = listener;
+            
             var otherDetector = other.gameObject.GetComponent<CollisionDetector>();
-            evt.second = otherDetector != null ? otherDetector.listener : null;
+            /*Debug.Log(listener.ID);
+            Debug.Log(otherDetector.gameObject.name);*/
+            collisionEvent.second = otherDetector != null ? otherDetector.listener : null;
         }
     }
 }

@@ -17,11 +17,6 @@ public class EntityFactory
 
     public Entity CreateEntityWithComponents(Sprite sprite, float speed, float movementNormalization)
     {
-        Debug.Log("=========");
-        Debug.Log(sprite);
-        Debug.Log(speed);
-        Debug.Log(movementNormalization);
-        Debug.Log("=========");
         var entity = _world.CreateEntity();
         entity.AddComponent<PlayerComponent>();
 
@@ -55,7 +50,11 @@ public class EntityFactory
 
         playerGameObject.GameObject.AddComponent<BoxCollider2D>();
 
-
+        ref var canCollideComponent = ref entity.AddComponent<CanCollideComponent>();
+        canCollideComponent.detector = playerGameObject.GameObject.AddComponent<CollisionDetector>();
+        canCollideComponent.detector.Init(_world);
+        canCollideComponent.detector.listener = entity;
+        
         return entity;
     }
 
