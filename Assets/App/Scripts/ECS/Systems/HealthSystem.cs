@@ -15,7 +15,7 @@ namespace App.Scripts.ECS.Systems
 
         public override void OnAwake()
         {
-            _playerFilter = World.Filter.With<PlayerComponent>().With<DamageComponent>().With<HealthComponent>().Build();
+            _playerFilter = World.Filter.With<PlayerComponent>().With<HealthComponent>().Build();
             _wallsFilter = World.Filter.With<WallComponent>().Build();
             
         }
@@ -25,12 +25,10 @@ namespace App.Scripts.ECS.Systems
             foreach (var entity in _playerFilter)
             {
                 ref var healthComponent = ref entity.GetComponent<HealthComponent>();
-                ref var damageComponent = ref entity.GetComponent<DamageComponent>();
                 ref var gameObjectComponent = ref entity.GetComponent<GameObjectComponent>();
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-                    healthComponent.currentHealth -= damageComponent.Damage;
                     Debug.Log($"CurrentHealth/MaxHealth:  {healthComponent.currentHealth}/{healthComponent.maxHealth}");
                 }
 

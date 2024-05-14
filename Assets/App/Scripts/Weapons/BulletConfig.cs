@@ -6,6 +6,6 @@ namespace App.Scripts
     public class BulletConfig : ScriptableObject
     {
         public Rigidbody2D prefab;
-        public float damage;
+        public int damage;
     }
 }

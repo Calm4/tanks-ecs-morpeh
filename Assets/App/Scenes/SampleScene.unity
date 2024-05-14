@@ -161,9 +161,15 @@ MonoBehaviour:
     system: {fileID: 11400000, guid: d527d75da6514b348a2218d1e635e9ff, type: 2}
   - enabled: 1
     system: {fileID: 11400000, guid: f86c6f6b15fa11a4bb38cadc84f0da48, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: a6e510955b879af44bc615a189191118, type: 2}
   fixedUpdateSystems:
   - enabled: 1
+    system: {fileID: 11400000, guid: 586c9500a841ffb49be2f7269adf307a, type: 2}
+  - enabled: 1
     system: {fileID: 11400000, guid: 5e9e3f332a20f174f997be7221c2e667, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 47648472e81049942afb9a4e8f5a01b8, type: 2}
   lateUpdateSystems: []
   cleanupSystems: []
 --- !u!4 &40634630

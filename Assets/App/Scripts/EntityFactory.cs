@@ -44,9 +44,7 @@ public class EntityFactory
         health.currentHealth = 80;
         health.maxHealth = 100;
 
-        ref var damage = ref entity.AddComponent<DamageComponent>();
-        damage.Damage = 5;
-        damage.CritDamage = 10;
+      
 
         playerGameObject.GameObject.AddComponent<BoxCollider2D>();
 
@@ -83,10 +81,6 @@ public class EntityFactory
         ref var health = ref entity.AddComponent<HealthComponent>();
         health.currentHealth = 100;
         health.maxHealth = 100;
-
-        ref var damage = ref entity.AddComponent<DamageComponent>();
-        damage.Damage = 5;
-        damage.CritDamage = 10;
 
         enemyGameObject.GameObject.AddComponent<BoxCollider2D>();
 
