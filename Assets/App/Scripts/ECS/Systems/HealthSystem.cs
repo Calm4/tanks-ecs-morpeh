@@ -1,5 +1,4 @@
-﻿using App.Scripts.Components;
-using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.Components;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;

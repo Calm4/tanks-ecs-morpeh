@@ -1,12 +1,11 @@
-﻿using App.Scripts.Components;
-using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.Components;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
+    using Scellecs.Morpeh;
 
 namespace App.Scripts.ECS.Systems
 {
-    using Scellecs.Morpeh;
-
+    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(DestroyEnemySystem), fileName = "Destroy Enemy System")]
     public sealed class DestroyEnemySystem : UpdateSystem
     {
         private Filter _destroyedEnemies;

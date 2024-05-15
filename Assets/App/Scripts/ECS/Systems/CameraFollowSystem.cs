@@ -1,9 +1,8 @@
-﻿using App.Scripts.Components;
-using Scellecs.Morpeh;
+﻿using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
 
-namespace App.Scripts.Systems
+namespace App.Scripts.ECS.Systems
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CameraFollowSystem), fileName = "Camera Follow System")]
     public sealed class CameraFollowSystem : UpdateSystem {

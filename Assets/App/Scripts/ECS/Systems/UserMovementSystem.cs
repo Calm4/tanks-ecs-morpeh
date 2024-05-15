@@ -8,6 +8,7 @@ namespace App.Scripts.ECS.Systems
 {
     using Scellecs.Morpeh;
 
+    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(UserMovementSystem), fileName = "User Movement System")]
     public sealed class UserMovementSystem : SimpleUpdateSystem<MoveDirectionComponent, ControlledByUserComponent>
     {
         protected override void Process(Entity entity, ref MoveDirectionComponent moveDirection, ref ControlledByUserComponent controlledByUser, in float deltaTime)

@@ -1,7 +1,7 @@
 ﻿using System;
 using Scellecs.Morpeh;
 
-namespace App.Scripts {
+namespace App.Scripts.ECS.Components {
 
     [Serializable]
     public struct ControlledByUserComponent : IComponent {

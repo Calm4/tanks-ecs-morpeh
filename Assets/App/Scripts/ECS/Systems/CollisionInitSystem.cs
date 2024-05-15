@@ -1,11 +1,12 @@
 ﻿using App.Scripts.ECS.Components;
+using App.Scripts.Weapons;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
 
 namespace App.Scripts.ECS.Systems
 {
-    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CollisionInitSystem))]
+    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CollisionInitSystem), fileName = "Collision Init System")]
     public sealed class CollisionInitSystem : FixedUpdateSystem
     {
         private Filter _wallsFilter;

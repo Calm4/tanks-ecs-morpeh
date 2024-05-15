@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cab4edde15a6b2441a52d861ed9307b5, type: 3}
-  m_Name: Movement System
+  m_Script: {fileID: 11500000, guid: bf6f61a938874c879a73a2745ac123cd, type: 3}
+  m_Name: Game Player Create System
   m_EditorClassIdentifier: 
+  playerRepository: {fileID: 0}

@@ -1,4 +1,5 @@
-﻿using Scellecs.Morpeh.Helpers;
+﻿using App.Scripts.ECS.Components;
+using Scellecs.Morpeh.Helpers;
 using UnityEngine.InputSystem;
     using Scellecs.Morpeh;
     using UnityEngine;

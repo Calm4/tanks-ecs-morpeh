@@ -1,14 +1,16 @@
 ﻿using App.Scripts.ECS.Components;
 using Scellecs.Morpeh.Systems;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using Scellecs.Morpeh;
 
 namespace App.Scripts.ECS.Systems
 {
-    using Scellecs.Morpeh;
-
+    [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(PlayerMovementInitSystem), fileName = "Player Movement Init System")]
     public sealed class PlayerMovementInitSystem : UpdateSystem
     {
         private Filter _filter;
+
         public override void OnAwake()
         {
             _filter = World.Filter.With<PlayerComponent>().Without<MoveDirectionComponent>().Build();
@@ -21,7 +23,9 @@ namespace App.Scripts.ECS.Systems
                 entity.AddComponent<MoveDirectionComponent>();
             }
         }
-        public static PlayerMovementInitSystem Create() {
+
+        public static PlayerMovementInitSystem Create()
+        {
             return CreateInstance<PlayerMovementInitSystem>();
         }
     }
