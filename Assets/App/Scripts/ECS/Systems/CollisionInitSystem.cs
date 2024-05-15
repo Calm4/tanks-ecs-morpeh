@@ -11,6 +11,7 @@ namespace App.Scripts.ECS.Systems
         private Filter _wallsFilter;
         private Filter _playerFilter;
         private Filter _bulletsFilter;
+
         public override void OnAwake()
         {
             _wallsFilter = World.Filter.With<WallComponent>().Without<CanCollideComponent>().Build();
@@ -31,7 +32,7 @@ namespace App.Scripts.ECS.Systems
             {
                 ref BulletComponent bullet = ref entity.GetComponent<BulletComponent>();
                 MakeCanCollide(entity, bullet.body.gameObject);
-            }   
+            }
         }
 
         private void ProcessPlayer()
@@ -42,6 +43,7 @@ namespace App.Scripts.ECS.Systems
                 MakeCanCollide(entity, player.body.gameObject);
             }
         }
+
 
         private void ProcessWalls()
         {
@@ -60,8 +62,10 @@ namespace App.Scripts.ECS.Systems
             canCollide.detector.Init(World);
             canCollide.detector.listener = entity;
         }
-        
-        public static CollisionInitSystem Create() {
+
+
+        public static CollisionInitSystem Create()
+        {
             return CreateInstance<CollisionInitSystem>();
         }
     }
