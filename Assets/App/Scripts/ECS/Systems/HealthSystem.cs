@@ -24,8 +24,8 @@ namespace App.Scripts.ECS.Systems
         {
             foreach (var entity in _playerFilter)
             {
+                ref var playerComponent = ref entity.GetComponent<PlayerComponent>();
                 ref var healthComponent = ref entity.GetComponent<HealthComponent>();
-                ref var gameObjectComponent = ref entity.GetComponent<GameObjectComponent>();
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -35,7 +35,7 @@ namespace App.Scripts.ECS.Systems
                 if (healthComponent.currentHealth <= 0)
                 {
                     Debug.Log("Died");
-                    GameObject.Destroy(gameObjectComponent.GameObject);
+                    Destroy(playerComponent.body.gameObject);
                     entity.Dispose();
                 }
             }

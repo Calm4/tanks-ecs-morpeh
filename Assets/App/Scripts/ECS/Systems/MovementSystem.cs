@@ -1,42 +1,33 @@
-using App.Scripts.Components;
-using Scellecs.Morpeh;
-using Scellecs.Morpeh.Systems;
+﻿using App.Scripts.ECS.Components;
+using Scellecs.Morpeh.Helpers;
 using UnityEngine;
 
 namespace App.Scripts.ECS.Systems
 {
+    using Scellecs.Morpeh;
+
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(MovementSystem), fileName = "Movement System")]
-    public sealed class MovementSystem : UpdateSystem {
-        private Filter _filter;
-        public override void OnAwake()
+    public sealed class MovementSystem : SimpleFixedUpdateSystem<PlayerComponent ,MoveDirectionComponent>
+    {
+        protected override void Process(Entity entity, ref PlayerComponent player, ref MoveDirectionComponent moveDirection, in float deltaTime)
         {
-            _filter = World.Filter.With<PositionComponent>().With<VelocityComponent>().With<GameObjectComponent>().With<SpriteRendererComponent>().Build();
-        }
+            Vector2 direction = moveDirection.direction;
+            Vector2 velocity = player.config.speed * direction;
 
-        public override void OnUpdate(float deltaTime) {
-            foreach (var entity in _filter) {
-                ref var position = ref entity.GetComponent<PositionComponent>();
-                ref var velocity = ref entity.GetComponent<VelocityComponent>();
-                ref var gameObject = ref entity.GetComponent<GameObjectComponent>();
+            player.body.velocity = velocity;
+            player.body.angularVelocity = 0f;
 
-                float horizontalInput = Input.GetAxisRaw("Horizontal");
-                float verticalInput = Input.GetAxisRaw("Vertical");
-            
-                Vector2 input = new Vector2(horizontalInput, verticalInput);
-            
-                velocity.velocityValue = input.normalized * velocity.speed * velocity.movementNormalization;
-                Vector2 newPosition = position.PositionValue + velocity.velocityValue;
-            
-                var rigidbody2D = gameObject.GameObject.GetComponent<Rigidbody2D>();
-                rigidbody2D.MovePosition(newPosition);
-
-                position.PositionValue = rigidbody2D.position;
+            if (direction.sqrMagnitude <= 0f)
+            {
+                return;
             }
+
+            float angle = Vector2.SignedAngle(Vector2.up, direction);
+            player.body.rotation = angle;
         }
-
-
-        public override void Dispose() {
+        
+        public static MovementSystem Create() {
+            return CreateInstance<MovementSystem>();
         }
     }
 }
-

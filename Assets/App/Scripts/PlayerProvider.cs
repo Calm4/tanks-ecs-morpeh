@@ -13,7 +13,7 @@ namespace App.Scripts
     [Serializable]
     public struct PlayerComponent : IComponent 
     {
-        public VelocityComponent config;
+        public PlayerConfig config;
         public Rigidbody2D body;
         public Vector2 userTextOffset;
     }

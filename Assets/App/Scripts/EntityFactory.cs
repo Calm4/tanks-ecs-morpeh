@@ -9,59 +9,46 @@ using HealthComponent = App.Scripts.HealthComponent;
 
 public class EntityFactory
 {
-    private World _world;
+    private readonly World _world;
+    private PlayerConfig _playerConfig;
+    private Entity _playerEntity;
 
     public EntityFactory(World world)
     {
         _world = world;
     }
 
-    public Entity CreateEntityWithComponents(Sprite sprite, float speed, float movementNormalization, BulletWeaponConfig bulletWeaponConfig)
+    public Entity CreateEntityWithComponents()
     {
-        var entity = _world.CreateEntity();
-
-        ref var position = ref entity.AddComponent<PositionComponent>();
-        position.PositionValue = Vector2.zero;
-
-        ref var velocity = ref entity.AddComponent<VelocityComponent>();
-        velocity.velocityValue = Vector2.zero;
-        velocity.speed = speed;
-        velocity.movementNormalization = movementNormalization;
+        _playerConfig = ScriptableObject.CreateInstance<PlayerConfig>();
+        _playerConfig.speed = 4f;
         
+        _playerEntity = _world.CreateEntity();
+        ref PlayerComponent player = ref _playerEntity.AddComponent<PlayerComponent>();
+        player.config = _playerConfig;
+        player.body = new GameObject().AddComponent<Rigidbody2D>();
+        player.body.drag = 0;
+
+        ref MoveDirectionComponent moveDirection = ref _playerEntity.AddComponent<MoveDirectionComponent>();
+        moveDirection.direction = Vector2.zero;
         
-        ref var playerGameObject = ref entity.AddComponent<GameObjectComponent>();
-        playerGameObject.GameObject = new GameObject("Player");
+        /*ref var playerGameObject = ref entity.AddComponent<GameObjectComponent>();
+        playerGameObject.GameObject = new GameObject("Player");*/
         
 
-        ref var spriteRenderer = ref entity.AddComponent<SpriteRendererComponent>();
-        spriteRenderer.SpriteRenderer = playerGameObject.GameObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.SpriteRenderer.sprite = sprite;
-
-        var rigidbody2d = playerGameObject.GameObject.AddComponent<Rigidbody2D>();
-        rigidbody2d.freezeRotation = true;
-        rigidbody2d.gravityScale = 0f;
-        rigidbody2d.interpolation = RigidbodyInterpolation2D.Interpolate;
-
-        ref var health = ref entity.AddComponent<HealthComponent>();
-        health.currentHealth = 80;
-        health.maxHealth = 100;
-
-        ref var playerComponent = ref entity.AddComponent<PlayerComponent>();
-        playerGameObject.GameObject.AddComponent<PlayerProvider>();
-        playerComponent.config = velocity;
-        playerComponent.body = rigidbody2d;
-      
-
-        playerGameObject.GameObject.AddComponent<BoxCollider2D>();
-
-        ref var canCollideComponent = ref entity.AddComponent<CanCollideComponent>();
+        /*ref var spriteRenderer = ref entity.AddComponent<SpriteRendererComponent>();
+        spriteRenderer.SpriteRenderer = player.body.gameObject.AddComponent<SpriteRenderer>();
+        spriteRenderer.SpriteRenderer.sprite = sprite;*/
+        
+        /*ref var canCollideComponent = ref entity.AddComponent<CanCollideComponent>();
         canCollideComponent.detector = playerGameObject.GameObject.AddComponent<CollisionDetector>();
         canCollideComponent.detector.Init(_world);
-        canCollideComponent.detector.listener = entity;
-        
+        canCollideComponent.detector.listener = entity;*/
+         
+        /*
         ref var bulletWeaponComponent = ref entity.AddComponent<BulletWeaponComponent>();
-        bulletWeaponComponent.config = bulletWeaponConfig;
-        return entity;
+        bulletWeaponComponent.config = bulletWeaponConfig;*/
+        return _playerEntity;
     }
 
     public Entity CreateEnemyEntity(Sprite sprite)

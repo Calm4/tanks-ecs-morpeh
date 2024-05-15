@@ -17,7 +17,7 @@ namespace App.Scripts
             _world = World.Default;
             _entityFactory = new EntityFactory(_world);
 
-            var playerEntity = _entityFactory.CreateEntityWithComponents(sprite,speed, movementNormalization,bulletWeaponConfig);
+            var playerEntity = _entityFactory.CreateEntityWithComponents();
             _entityFactory.CreateCameraEntity(playerEntity);
         }
 

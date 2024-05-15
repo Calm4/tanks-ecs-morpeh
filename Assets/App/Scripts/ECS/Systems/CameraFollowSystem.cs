@@ -11,16 +11,15 @@ namespace App.Scripts.Systems
 
         public override void OnAwake()
         {
-            _filter = World.Filter.With<FollowTargetComponent>().Build();
+            _filter = World.Filter.With<PlayerComponent>().Build();
         }
 
         public override void OnUpdate(float deltaTime)
         {
             foreach (var entity in _filter)
             {
-                ref var followTarget = ref entity.GetComponent<FollowTargetComponent>();
-                ref var gameObject = ref followTarget.TargetEntity.GetComponent<GameObjectComponent>();
-                Camera.main.transform.position = new Vector3(gameObject.GameObject.transform.position.x, gameObject.GameObject.transform.position.y, Camera.main.transform.position.z);
+                ref var followTarget = ref entity.GetComponent<PlayerComponent>();
+                Camera.main.transform.position = new Vector3(followTarget.body.gameObject.transform.position.x, followTarget.body.gameObject.transform.position.y, Camera.main.transform.position.z);
             }
         }
 
