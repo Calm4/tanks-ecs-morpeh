@@ -3,6 +3,7 @@ using App.Scripts.Components;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace App.Scripts
 {
