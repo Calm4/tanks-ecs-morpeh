@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf6f61a938874c879a73a2745ac123cd, type: 3}
-  m_Name: Game Player Create System
+  m_Script: {fileID: 11500000, guid: 420aac049ac6415f99edf6eb8dfb524c, type: 3}
+  m_Name: Physics Update System
   m_EditorClassIdentifier: 
-  playerRepository: {fileID: 11400000, guid: db2bdcb3a96d5fd4f8bf8ed0d5e61625, type: 2}
