@@ -35,8 +35,9 @@ namespace App.Scripts.ECS.Systems
             playerTransform = playerInstance.transform;
 
             userEntity.AddComponent<UserWithPlayer>().player = playerEntity;
-            userEntity.AddComponent<ControlledByUserComponent>().user = userEntity;
+            playerEntity.AddComponent<ControlledByUserComponent>().user = userEntity;
 
+            playerTransform.position = new Vector2(0, 3);
         }
     }
 }

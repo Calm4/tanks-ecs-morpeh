@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BulletWeaponConfig
   m_EditorClassIdentifier: 
   bulletConfig: {fileID: 11400000, guid: 45460bf9f55563e4ebbff685d39bd2f2, type: 2}
-  bulletSpeed: 2
+  bulletSpeed: 10
   reloadTime: 1

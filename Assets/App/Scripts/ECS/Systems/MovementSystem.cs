@@ -17,6 +17,8 @@ namespace App.Scripts.ECS.Systems
             player.body.velocity = velocity;
             player.body.angularVelocity = 0f;
 
+            Debug.Log($"Velocity: {velocity}");
+            
             if (direction.sqrMagnitude <= 0f)
             {
                 return;
