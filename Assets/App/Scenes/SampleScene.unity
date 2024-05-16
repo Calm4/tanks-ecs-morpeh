@@ -166,13 +166,11 @@ MonoBehaviour:
   - enabled: 1
     system: {fileID: 11400000, guid: 24360ad216e11f5408b2213898d90079, type: 2}
   - enabled: 1
-    system: {fileID: 11400000, guid: d527d75da6514b348a2218d1e635e9ff, type: 2}
-  - enabled: 1
-    system: {fileID: 11400000, guid: f86c6f6b15fa11a4bb38cadc84f0da48, type: 2}
-  - enabled: 1
     system: {fileID: 11400000, guid: 8ed01e0350e87f643ad97293fc974f4b, type: 2}
   - enabled: 1
     system: {fileID: 11400000, guid: cb36b6d36a84fd54398937bf440dd1eb, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: d527d75da6514b348a2218d1e635e9ff, type: 2}
   fixedUpdateSystems:
   - enabled: 1
     system: {fileID: 11400000, guid: 9886c04e21b94c4499b438f10e078f30, type: 2}
@@ -184,7 +182,11 @@ MonoBehaviour:
     system: {fileID: 11400000, guid: c804e1770c0286643a21775a7f893a32, type: 2}
   - enabled: 1
     system: {fileID: 11400000, guid: 47648472e81049942afb9a4e8f5a01b8, type: 2}
-  lateUpdateSystems: []
+  lateUpdateSystems:
+  - enabled: 1
+    system: {fileID: 11400000, guid: e8775d29256c64b4385a19fdc0b09c44, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 3ac7e5b757d20a449a49d55caa2b50c7, type: 2}
   cleanupSystems: []
 --- !u!4 &40634630
 Transform:

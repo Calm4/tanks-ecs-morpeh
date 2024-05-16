@@ -8,8 +8,7 @@ namespace App.Scripts.Weapons
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(BulletWeaponSystem), fileName = "Bullet Weapon System")]
     public sealed class BulletWeaponSystem : SimpleFixedUpdateSystem<BulletWeaponComponent, PlayerComponent>
     {
-        protected override void Process(Entity entity, ref BulletWeaponComponent weapon, ref PlayerComponent player,
-            in float deltaTime)
+        protected override void Process(Entity entity, ref BulletWeaponComponent weapon, ref PlayerComponent player, in float deltaTime)
         {
             if (!weapon.shoot)
             {
@@ -37,12 +36,11 @@ namespace App.Scripts.Weapons
             bulletBody.velocity = Quaternion.Euler(0f, 0f, bulletBody.rotation)
                                   * Vector3.up
                                   * weapon.config.bulletSpeed;
-            
-            World.CreateEntity().SetComponent(new BulletComponent()
-            {
+
+            World.CreateEntity().SetComponent(new BulletComponent() {
                 body = bulletBody,
                 config = weapon.config.bulletConfig,
-                shooter = entity
+                shooter = entity,
             });
         }
 

@@ -9,6 +9,7 @@ namespace App.Scripts
     {
         public override void OnAwake()
         {
+            Physics2D.simulationMode = SimulationMode2D.Script;
         }
 
         public override void OnUpdate(float deltaTime)
@@ -16,7 +17,7 @@ namespace App.Scripts
             Simulate(deltaTime);
         }
 
-        public static void Simulate(float dt)
+        private static void Simulate(float dt)
         {
             Physics2D.Simulate(dt);
         }
