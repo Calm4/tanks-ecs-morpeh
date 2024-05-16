@@ -22,11 +22,15 @@ namespace App.Scripts.Weapons
             {
                 eventComponent.second.SetComponent(new DamageEventComponent()
                 {
-                    hitPosition = eventComponent.collision.GetContact(0).point,
+                    hitPosition = eventComponent.collision?.GetContact(0).point,
                     amount = bullet.config.damage,
                     dealer = bullet.shooter
                 });
             }
+            
+            Destroy(bullet.body.gameObject);
+            bulletEntity.RemoveComponent<BulletComponent>();
+            World.RemoveEntity(bulletEntity);
         }
 
         public static BulletHitSystem Create()

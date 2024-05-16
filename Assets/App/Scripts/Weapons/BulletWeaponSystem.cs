@@ -37,6 +37,13 @@ namespace App.Scripts.Weapons
             bulletBody.velocity = Quaternion.Euler(0f, 0f, bulletBody.rotation)
                                   * Vector3.up
                                   * weapon.config.bulletSpeed;
+            
+            World.CreateEntity().SetComponent(new BulletComponent()
+            {
+                body = bulletBody,
+                config = weapon.config.bulletConfig,
+                shooter = entity
+            });
         }
 
         private void IgnoreSelfCollisions(Collider2D bulletCollider, Entity entity)

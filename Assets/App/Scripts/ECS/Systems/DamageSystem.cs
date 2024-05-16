@@ -16,6 +16,7 @@ namespace App.Scripts.ECS.Systems
             }
 
             health.currentHealth -= damage.amount;
+            Debug.Log(health.currentHealth);
             if (health.currentHealth > 0)
             {
                 return;
