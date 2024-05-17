@@ -1,4 +1,5 @@
-﻿using App.Scripts.ECS.Player;
+﻿using App.Scripts.ECS.Cannon;
+using App.Scripts.ECS.Player;
 using App.Scripts.ECS.Wall;
 using App.Scripts.ECS.Weapons;
 using Scellecs.Morpeh;
@@ -13,12 +14,14 @@ namespace App.Scripts.ECS.Collision
         private Filter _wallsFilter;
         private Filter _playerFilter;
         private Filter _bulletsFilter;
+        private Filter _cannonFilter;
 
         public override void OnAwake()
         {
             _wallsFilter = World.Filter.With<WallComponent>().Without<CanCollideComponent>().Build();
             _playerFilter = World.Filter.With<PlayerComponent>().Without<CanCollideComponent>().Build();
             _bulletsFilter = World.Filter.With<BulletComponent>().Without<CanCollideComponent>().Build();
+            _cannonFilter = World.Filter.With<CannonComponent>().Without<CanCollideComponent>().Build();
         }
 
         public override void OnUpdate(float deltaTime)
@@ -26,6 +29,16 @@ namespace App.Scripts.ECS.Collision
             ProcessPlayer();
             ProcessBullets();
             ProcessWalls();
+            ProcessCannons();
+        }
+
+        private void ProcessCannons()
+        {
+            foreach (var entity in _cannonFilter)
+            {
+                ref CannonComponent cannon = ref entity.GetComponent<CannonComponent>();
+                MakeCanCollide(entity, cannon.body.gameObject);
+            }
         }
 
         private void ProcessBullets()
