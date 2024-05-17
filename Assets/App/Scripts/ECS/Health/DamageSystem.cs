@@ -1,9 +1,8 @@
-﻿using App.Scripts.ECS.Components;
-using Scellecs.Morpeh;
+﻿using Scellecs.Morpeh;
 using Scellecs.Morpeh.Helpers;
 using UnityEngine;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Health
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(DamageSystem), fileName = "Damage System")]
     public sealed class DamageSystem : SimpleUpdateSystem<HealthComponent, DamageEventComponent>

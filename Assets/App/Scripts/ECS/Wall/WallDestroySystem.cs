@@ -1,9 +1,9 @@
-﻿using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.Health;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Wall
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(WallDestroySystem), fileName = "Wall Destroy System")]
     public sealed class WallDestroySystem : UpdateSystem

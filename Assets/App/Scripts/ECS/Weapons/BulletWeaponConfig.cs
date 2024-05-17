@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace App.Scripts.Weapons
+namespace App.Scripts.ECS.Weapons
 {
     [CreateAssetMenu(fileName = "BulletWeaponConfig", menuName = "Configs/BulletWeaponConfig", order = 0)]
     public class BulletWeaponConfig : ScriptableObject

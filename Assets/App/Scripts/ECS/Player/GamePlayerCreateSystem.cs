@@ -1,11 +1,10 @@
-﻿using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.GameInput;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Player
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(GamePlayerCreateSystem), fileName = "Game Player Create System")]
     public sealed class GamePlayerCreateSystem : UpdateSystem

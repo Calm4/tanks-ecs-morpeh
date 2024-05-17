@@ -7,10 +7,8 @@ using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Users;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.GameInput
 {
-    using Scellecs.Morpeh;
-
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(GameInputSystem))]
     public sealed class GameInputSystem : UpdateSystem {
         private Action<InputControl, InputEventPtr> unpairedDeviceUsedDelegate;

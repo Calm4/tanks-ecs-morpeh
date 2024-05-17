@@ -2,7 +2,7 @@
 using Scellecs.Morpeh;
 using UnityEngine;
 
-namespace App.Scripts.Weapons
+namespace App.Scripts.ECS.Weapons
 {
     [Serializable]
     public struct BulletComponent : IComponent

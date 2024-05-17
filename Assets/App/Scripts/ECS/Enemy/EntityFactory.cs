@@ -1,8 +1,10 @@
 using App.Scripts.ECS.Components;
+using App.Scripts.ECS.Movement;
+using App.Scripts.ECS.Player;
 using Scellecs.Morpeh;
 using UnityEngine;
 
-namespace App.Scripts
+namespace App.Scripts.ECS.Enemy
 {
     public class EntityFactory
     {

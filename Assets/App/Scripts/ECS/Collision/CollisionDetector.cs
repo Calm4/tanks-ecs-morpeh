@@ -1,9 +1,8 @@
 ﻿using System;
-using App.Scripts.ECS.Components;
 using Scellecs.Morpeh;
 using UnityEngine;
 
-namespace App.Scripts
+namespace App.Scripts.ECS.Collision
 {
     public class CollisionDetector : MonoBehaviour
     {

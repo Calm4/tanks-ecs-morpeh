@@ -1,12 +1,9 @@
-﻿using App.Scripts.ECS.Components;
-using Scellecs.Morpeh.Helpers;
+﻿using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Health
 {
-    using Scellecs.Morpeh;
-
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(DamageCleanSystem), fileName = "Damage Clean System")]
     public sealed class DamageCleanSystem : LateUpdateSystem
     {

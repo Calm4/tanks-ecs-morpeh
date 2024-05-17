@@ -1,9 +1,10 @@
-﻿using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.Collision;
+using App.Scripts.ECS.Player;
+using Scellecs.Morpeh;
 using Scellecs.Morpeh.Helpers;
 using UnityEngine;
-using Scellecs.Morpeh;
 
-namespace App.Scripts.Weapons
+namespace App.Scripts.ECS.Weapons
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(BulletWeaponSystem), fileName = "Bullet Weapon System")]
     public sealed class BulletWeaponSystem : SimpleFixedUpdateSystem<BulletWeaponComponent, PlayerComponent>

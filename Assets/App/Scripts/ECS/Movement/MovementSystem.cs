@@ -1,11 +1,10 @@
-﻿using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.Player;
+using Scellecs.Morpeh;
 using Scellecs.Morpeh.Helpers;
 using UnityEngine;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Movement
 {
-    using Scellecs.Morpeh;
-
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(MovementSystem), fileName = "Movement System")]
     public sealed class MovementSystem : SimpleFixedUpdateSystem<PlayerComponent ,MoveDirectionComponent>
     {

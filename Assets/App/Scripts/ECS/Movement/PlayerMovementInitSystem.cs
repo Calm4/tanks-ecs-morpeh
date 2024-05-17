@@ -1,10 +1,9 @@
-﻿using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.Player;
+using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using Scellecs.Morpeh;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Movement
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(PlayerMovementInitSystem), fileName = "Player Movement Init System")]
     public sealed class PlayerMovementInitSystem : UpdateSystem

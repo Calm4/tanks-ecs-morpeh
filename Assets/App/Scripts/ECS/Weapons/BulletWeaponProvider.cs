@@ -1,10 +1,9 @@
 ﻿using System;
-using App.Scripts.ECS.Components;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
 
-namespace App.Scripts.Weapons
+namespace App.Scripts.ECS.Weapons
 {
     [AddComponentMenu("ECS/Components/" + nameof(BulletWeaponComponent))]
     

@@ -1,7 +1,7 @@
 ﻿using System;
 using Scellecs.Morpeh;
 
-namespace App.Scripts.ECS.Components
+namespace App.Scripts.ECS.Collision
 {
     [Serializable]
     public struct CanCollideComponent : IComponent

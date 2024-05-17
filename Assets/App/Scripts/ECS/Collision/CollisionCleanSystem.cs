@@ -1,9 +1,8 @@
-﻿using App.Scripts.ECS.Components;
+﻿using Scellecs.Morpeh;
 using Scellecs.Morpeh.Helpers;
 using UnityEngine;
-using Scellecs.Morpeh;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Collision
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CollisionCleanSystem))]
     public sealed class CollisionCleanSystem : SimpleLateUpdateSystem<CollisionEventComponent>

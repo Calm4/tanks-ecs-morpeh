@@ -1,10 +1,10 @@
-﻿using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.Player;
+using App.Scripts.ECS.Wall;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Health
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(HealthSystem), fileName = "Health System")]
     public sealed class HealthSystem : UpdateSystem

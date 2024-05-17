@@ -3,7 +3,7 @@ using Scellecs.Morpeh;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 
-namespace App.Scripts {
+namespace App.Scripts.ECS.GameInput {
 
     [Serializable]
     public struct GameUser : IComponent, IDisposable {

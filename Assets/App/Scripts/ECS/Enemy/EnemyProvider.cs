@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace App.Scripts
+namespace App.Scripts.ECS.Enemy
 {
     public class EnemyProvider : MonoBehaviour
     {

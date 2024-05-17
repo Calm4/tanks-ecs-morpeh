@@ -2,9 +2,8 @@
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace App.Scripts
+namespace App.Scripts.ECS.Player
 {
     [AddComponentMenu("ECS/Components/" + nameof(PlayerComponent))]
     [RequireComponent(typeof(Rigidbody2D))]

@@ -1,10 +1,10 @@
-﻿using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.GameInput;
+using Scellecs.Morpeh;
 using Scellecs.Morpeh.Helpers;
+using UnityEngine;
 using UnityEngine.InputSystem;
-    using Scellecs.Morpeh;
-    using UnityEngine;
 
-    namespace App.Scripts.Weapons
+namespace App.Scripts.ECS.Weapons
 {
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(UserBulletWeaponSystem), fileName = "User Bullet Weapon System")]
     public sealed class UserBulletWeaponSystem : SimpleUpdateSystem<BulletWeaponComponent, ControlledByUserComponent>

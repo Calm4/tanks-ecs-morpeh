@@ -1,9 +1,10 @@
-using App.Scripts.ECS.Components;
+using App.Scripts.ECS.Enemy;
+using App.Scripts.ECS.Health;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
 
-namespace App.Scripts
+namespace App.Scripts.ECS.Player
 {
     public class PlayerCollision : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Scellecs.Morpeh;
 using UnityEngine;
 
-namespace App.Scripts.ECS.Components
+namespace App.Scripts.ECS.Health
 {
     [Serializable]
     public struct DamageEventComponent : IComponent

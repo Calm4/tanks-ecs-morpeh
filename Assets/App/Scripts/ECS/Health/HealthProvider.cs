@@ -3,7 +3,7 @@ using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
 
-namespace App.Scripts
+namespace App.Scripts.ECS.Health
 {
     [AddComponentMenu("ECS/Components/HealthComponent")]
     public sealed class HealthProvider : MonoProvider<HealthComponent> { }

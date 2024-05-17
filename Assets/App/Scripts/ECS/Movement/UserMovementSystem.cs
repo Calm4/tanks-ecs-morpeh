@@ -1,13 +1,10 @@
-﻿using App.Scripts.ECS.Components;
+﻿using App.Scripts.ECS.GameInput;
+using Scellecs.Morpeh;
 using Scellecs.Morpeh.Helpers;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 
-namespace App.Scripts.ECS.Systems
+namespace App.Scripts.ECS.Movement
 {
-    using Scellecs.Morpeh;
-
     [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(UserMovementSystem), fileName = "User Movement System")]
     public sealed class UserMovementSystem : SimpleUpdateSystem<MoveDirectionComponent, ControlledByUserComponent>
     {
