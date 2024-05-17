@@ -15,8 +15,6 @@ namespace App.Scripts.ECS.Systems
         {
             PlayerInputActions inputActions = controlledByUser.user.GetComponent<GameUser>().inputActions;
             moveDirection.direction = inputActions.Player.Movement.ReadValue<Vector2>();
-            
-            Debug.Log($"MoveDirection: {moveDirection.direction}");
         }
     }
 }
