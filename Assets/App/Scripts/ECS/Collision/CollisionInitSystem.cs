@@ -5,7 +5,6 @@ using App.Scripts.ECS.Weapons;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Systems;
 using UnityEngine;
-using BulletWeaponComponent = App.Scripts.ECS.Cannon.BulletWeaponComponent;
 
 namespace App.Scripts.ECS.Collision
 {
@@ -22,7 +21,7 @@ namespace App.Scripts.ECS.Collision
             _wallsFilter = World.Filter.With<WallComponent>().Without<CanCollideComponent>().Build();
             _playerFilter = World.Filter.With<PlayerComponent>().Without<CanCollideComponent>().Build();
             _bulletsFilter = World.Filter.With<BulletComponent>().Without<CanCollideComponent>().Build();
-            _cannonFilter = World.Filter.With<BulletWeaponComponent>().Without<CanCollideComponent>().Build();
+            _cannonFilter = World.Filter.With<AutoCannonComponent>().Without<CanCollideComponent>().Build();
         }
 
         public override void OnUpdate(float deltaTime)
@@ -37,7 +36,7 @@ namespace App.Scripts.ECS.Collision
         {
             foreach (var entity in _cannonFilter)
             {
-                ref BulletWeaponComponent cannon = ref entity.GetComponent<BulletWeaponComponent>();
+                ref AutoCannonComponent cannon = ref entity.GetComponent<AutoCannonComponent>();
                 MakeCanCollide(entity, cannon.body.gameObject);
             }
         }

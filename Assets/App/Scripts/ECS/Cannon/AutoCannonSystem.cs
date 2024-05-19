@@ -9,9 +9,9 @@ namespace App.Scripts.ECS.Cannon
     namespace App.Scripts.ECS.Cannon
     {
         [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(AutoCannonSystem), fileName = "Auto Cannon System")]
-        public sealed class AutoCannonSystem : SimpleFixedUpdateSystem<BulletWeaponComponent>
+        public sealed class AutoCannonSystem : SimpleFixedUpdateSystem<AutoCannonComponent>
         {
-            protected override void Process(Entity entity, ref BulletWeaponComponent cannon, in float deltaTime)
+            protected override void Process(Entity entity, ref AutoCannonComponent cannon, in float deltaTime)
             {
                 if (Time.time - cannon.lastShotTime < cannon.config.reloadTime)
                 {
@@ -22,7 +22,7 @@ namespace App.Scripts.ECS.Cannon
                 cannon.lastShotTime = Time.time;
             }
 
-            private void CreateBullet(Entity entity, BulletWeaponComponent cannon)
+            private void CreateBullet(Entity entity, AutoCannonComponent cannon)
             {
                 Rigidbody2D bulletBody = Instantiate(cannon.config.bulletConfig.prefab,
                     cannon.shootPoint.position,

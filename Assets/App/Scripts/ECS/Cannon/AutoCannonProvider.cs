@@ -7,15 +7,17 @@ using UnityEngine.Serialization;
 
 namespace App.Scripts.ECS.Cannon
 {
-    [AddComponentMenu("ECS/Components/" + nameof(BulletWeaponComponent))]
-    public sealed class AutoCannonProvider : MonoProvider<BulletWeaponComponent> { }
+    [AddComponentMenu("ECS/Components/" + nameof(AutoCannonComponent))]
+    public sealed class AutoCannonProvider : MonoProvider<AutoCannonComponent>
+    {
+    }
 
     [Serializable]
-    public struct BulletWeaponComponent : IComponent
+    public struct AutoCannonComponent : IComponent
     {
         public BulletWeaponConfig config;
         public Rigidbody2D body;
         public float lastShotTime;
-         public Transform shootPoint;
+        public Transform shootPoint;
     }
 }
