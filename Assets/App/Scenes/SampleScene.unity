@@ -2433,6 +2433,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c259f5b08a0438d9389bb64ae2bf789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializedData:
+    config: {fileID: 11400000, guid: fd5818e3ab3e08544b5b96596aac19ba, type: 2}
+    body: {fileID: 2041227787}
 --- !u!114 &2041227785
 MonoBehaviour:
   m_ObjectHideFlags: 0

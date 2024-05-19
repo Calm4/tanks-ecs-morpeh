@@ -1,3 +1,4 @@
+using App.Scripts.ECS.Weapons;
 using UnityEngine;
 
 namespace App.Scripts.ECS.Cannon
@@ -6,5 +7,7 @@ namespace App.Scripts.ECS.Cannon
     public class CannonConfig : ScriptableObject
     {
         public float speed;
+        public float reloadTime;  
+        public BulletConfig bulletConfig; 
     }
 }

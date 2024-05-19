@@ -1,3 +1,4 @@
+using System;
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace App.Scripts.ECS.Cannon
     [AddComponentMenu("ECS/Components/CannonComponent")]
     public sealed class CannonProvider : MonoProvider<CannonComponent> { }
 
+    [Serializable]
     public struct CannonComponent : IComponent
     {
         public CannonConfig config;
