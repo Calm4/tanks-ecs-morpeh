@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aa878c3880240e89fe2010c300745ce, type: 3}
-  m_Name: BulletWeaponConfig
+  m_Script: {fileID: 11500000, guid: 5a943497e6c14632b32b4694da42f753, type: 3}
+  m_Name: Auto Cannon System
   m_EditorClassIdentifier: 
-  bulletConfig: {fileID: 11400000, guid: 45460bf9f55563e4ebbff685d39bd2f2, type: 2}
-  bulletSpeed: 10
-  reloadTime: 1

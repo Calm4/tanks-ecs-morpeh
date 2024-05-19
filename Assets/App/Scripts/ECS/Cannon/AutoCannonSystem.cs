@@ -9,15 +9,10 @@ namespace App.Scripts.ECS.Cannon
     namespace App.Scripts.ECS.Cannon
     {
         [CreateAssetMenu(menuName = "ECS/Systems/" + nameof(AutoCannonSystem), fileName = "Auto Cannon System")]
-        public sealed class AutoCannonSystem : SimpleFixedUpdateSystem<AutoCannonComponent>
+        public sealed class AutoCannonSystem : SimpleFixedUpdateSystem<BulletWeaponComponent>
         {
-            protected override void Process(Entity entity, ref AutoCannonComponent cannon, in float deltaTime)
+            protected override void Process(Entity entity, ref BulletWeaponComponent cannon, in float deltaTime)
             {
-                if (!cannon.canShoot)
-                {
-                    return;
-                }
-
                 if (Time.time - cannon.lastShotTime < cannon.config.reloadTime)
                 {
                     return;
@@ -27,19 +22,21 @@ namespace App.Scripts.ECS.Cannon
                 cannon.lastShotTime = Time.time;
             }
 
-            private void CreateBullet(Entity entity, AutoCannonComponent cannon)
+            private void CreateBullet(Entity entity, BulletWeaponComponent cannon)
             {
                 Rigidbody2D bulletBody = Instantiate(cannon.config.bulletConfig.prefab,
-                    cannon.body.position,
+                    cannon.shootPoint.position,
                     Quaternion.identity);
 
                 IgnoreSelfCollisions(bulletBody.GetComponent<Collider2D>(), entity);
-                bulletBody.gameObject.SetActive(true);
+                
                 bulletBody.rotation = cannon.body.rotation;
-                bulletBody.velocity = Quaternion.Euler(0f, 0f, bulletBody.rotation)
-                                      * Vector3.up
-                                      * cannon.config.speed;
-
+                
+                Vector2 cannonPosition = cannon.body.position;
+                Vector2 shootDirectionPosition = cannon.shootPoint.position;
+                Vector2 shootDirection = (shootDirectionPosition - cannonPosition).normalized;
+                bulletBody.velocity = shootDirection * cannon.config.bulletSpeed;
+                
                 World.CreateEntity().SetComponent(new BulletComponent()
                 {
                     body = bulletBody,
